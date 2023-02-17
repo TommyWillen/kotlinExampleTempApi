@@ -1,0 +1,20 @@
+scalar DateTime
+
+type Query {
+    temperatureReadingById(id: Int!): TemperatureReading
+}
+type Mutation {
+    recordTemperatureReading(temp: Float!, type: TemperatureType): TemperatureReading
+}
+
+type TemperatureReading @key(fields: "id") {
+    id: Int!
+    celsius: Float!
+    fahrenheit: Float!
+    collectedAt: DateTime!
+}
+
+enum TemperatureType {
+    CELSIUS
+    FAHRENHEIT
+}
